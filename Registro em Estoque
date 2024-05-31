@@ -1,0 +1,37 @@
+class Produto:
+    def __init__(self, nome, preco, quantidade):
+        self.nome = nome
+        self.preco = preco
+        self.quantidade = quantidade
+
+def registrar_produto():
+    nome = input("Digite o nome do produto: ")
+    preco = float(input("Digite o preço do produto: "))
+    quantidade = int(input("Digite a quantidade do produto: "))
+    novo_produto = Produto(nome, preco, quantidade)
+    return novo_produto
+
+def remover_produto(lista_produtos, nome_produto):
+    for produto in lista_produtos:
+        if produto.nome == nome_produto:
+            lista_produtos.remove(produto)
+            print("Produto removido com sucesso!")
+            return
+    print("Produto não encontrado.")
+
+# Exemplo de uso
+lista_produtos = [registrar_produto()]
+for _ in range(len(lista_produtos)):  
+    novo_produto = registrar_produto()
+    lista_produtos.append(novo_produto)
+
+print("\nLista de produtos:")
+for produto in lista_produtos:
+    print("Nome:", produto.nome, "- Preço:", produto.preco, "- Quantidade:", produto.quantidade)
+
+nome_produto_remover = input("\nDigite o nome do produto que deseja remover: ")
+remover_produto(lista_produtos, nome_produto_remover)
+
+print("\nLista de produtos atualizada:")
+for produto in lista_produtos:
+    print("Nome:", produto.nome, "- Preço:", produto.preco, "- Quantidade:", produto.quantidade)
